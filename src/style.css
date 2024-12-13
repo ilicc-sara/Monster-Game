@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+.container {
+  background-color: lightpink;
+  width: 1200px;
+  margin: 20vh auto;
+  padding: 10px 50px;
+}
+
+.form {
+  padding: 30px 20px;
+  width: 500px;
+  margin: 20px auto;
+  background-color: lightblue;
+}
+
+.monster-container {
+  width: 500px;
+  background-color: lightgreen;
+  padding: 20px 30px;
+}
+
+.monster-box {
+  background-color: plum;
+}
