@@ -6,10 +6,19 @@
 
 html {
   font-family: sans-serif;
+  background-color: rgb(142, 142, 142);
+}
+
+body {
+  font-family: "Roboto Mono", monospace, "sans-serif";
+}
+
+button {
+  font-family: inherit;
 }
 
 .container {
-  background-color: lightpink;
+  /* background-color: rgb(95, 95, 95); */
   width: 1200px;
   margin: 5vh auto;
   padding: 30px 30px;
@@ -19,9 +28,19 @@ html {
   padding: 30px 20px;
   width: 500px;
   margin: 20px auto;
-  background-color: lightblue;
+  background-color: rgb(64, 105, 29);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
 }
 
+.create-btn {
+  font-size: 20px;
+  background: none;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
 .monster-hero-cont {
   display: flex;
   align-items: flex-start;
@@ -71,6 +90,7 @@ html {
   display: flex;
   place-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .hero-img {
@@ -78,6 +98,7 @@ html {
 }
 
 .boost-btn {
+  margin-top: 10px;
   background-color: rgb(64, 105, 29);
   color: white;
   margin-top: 15px;
@@ -89,4 +110,31 @@ html {
   background-color: white;
   color: rgb(64, 105, 29);
   cursor: pointer;
+}
+
+.attack-btn-hero {
+  margin-top: 10px;
+  background-color: rgb(64, 105, 29);
+  color: white;
+  margin-top: 15px;
+  padding: 5px 10px;
+  border-radius: 777px;
+  position: absolute;
+  left: -15%;
+  top: 50%;
+}
+
+.attack-btn-hero:hover {
+  background-color: white;
+  color: rgb(64, 105, 29);
+  cursor: pointer;
+}
+
+.hero-text {
+  font-weight: bold;
+}
+
+.health,
+.defense {
+  font-size: 20px;
 }

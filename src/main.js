@@ -9,17 +9,23 @@ const attackBtn = document.querySelector(".attack-btn");
 
 const hero = document.querySelector(".hero");
 
+const heroAttack = document.querySelector(".attack-btn-hero");
+
+const defense = document.querySelector(".defense");
+const health = document.querySelector(".health");
+
 const monsterCreator = function () {
   const monster = {
     id: crypto.randomUUID(),
-    isDone: false,
     health: 1,
     attackPower: 20,
   };
 
   const getMonster = () => monster;
+  const getHealth = () => monster.attackPower;
+  const getAttackPower = () => monster.attackPower;
 
-  return { getMonster };
+  return { getMonster, getHealth, getAttackPower };
 };
 
 const heroManager = function () {
@@ -55,4 +61,7 @@ monsterContainer.addEventListener("click", function (e) {
   if (managerHero.getHealth() === 0) {
     hero.remove();
   }
+  health.textContent = managerHero.getHealth();
 });
+
+heroAttack.addEventListener("click", function (e) {});
