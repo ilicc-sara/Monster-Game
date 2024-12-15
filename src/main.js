@@ -2,7 +2,6 @@
 import "./style.css";
 
 const form = document.querySelector(".form");
-
 const monsterContainer = document.querySelector(".monster-container");
 
 const attackBtn = document.querySelector(".attack-btn");
@@ -14,6 +13,9 @@ const heroAttack = document.querySelector(".attack-btn-hero");
 const defense = document.querySelector(".defense");
 const health = document.querySelector(".health");
 
+let monsterHealth;
+let attackPower;
+
 const monsterCreator = function () {
   const monster = {
     id: crypto.randomUUID(),
@@ -22,10 +24,12 @@ const monsterCreator = function () {
   };
 
   const getMonster = () => monster;
+  const getId = () => monster.id;
   const getHealth = () => monster.attackPower;
   const getAttackPower = () => monster.attackPower;
+  const attackPowerDown = () => (monster.attackPower -= 1);
 
-  return { getMonster, getHealth, getAttackPower };
+  return { getMonster, getId, getHealth, getAttackPower, attackPowerDown };
 };
 
 const heroManager = function () {
@@ -41,12 +45,13 @@ const heroManager = function () {
 
   return { getHero, getHealth, healthDown, getDefense, defenseDown, defenseUp };
 };
+let creatorMonster;
 const managerHero = heroManager();
 console.log(managerHero.getHero());
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  const creatorMonster = monsterCreator();
+  creatorMonster = monsterCreator();
   console.log(creatorMonster.getMonster());
 
   const newMonster = document.createElement("div");
@@ -55,7 +60,14 @@ form.addEventListener("submit", function (e) {
               health: <span class="monst-health">1</span>&nbsp;&nbsp; attack power:
               <span class="monst-attack-power">20</span>
             </p>   <img class="buba" src="/bubica.png" /><btn class="attack-btn">attack</btn>`;
+
+  newMonster.setAttribute("data-id", creatorMonster.getId());
   monsterContainer.appendChild(newMonster);
+
+  console.log(newMonster);
+
+  monsterHealth = document.querySelector(".monst-health");
+  attackPower = document.querySelector(".monst-attack-power");
 });
 
 monsterContainer.addEventListener("click", function (e) {
@@ -65,9 +77,15 @@ monsterContainer.addEventListener("click", function (e) {
   managerHero.healthDown();
   console.log(managerHero.getHero());
 
+  creatorMonster.attackPowerDown();
+  // console.log(creatorMonster.getAttackPower());
+
   if (managerHero.getHealth() === 0) {
     hero.remove();
   }
+
+  attackPower.textContent = creatorMonster.getAttackPower();
+
   health.textContent = managerHero.getHealth();
 });
 
