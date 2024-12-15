@@ -20,7 +20,7 @@ button {
 .container {
   /* background-color: rgb(95, 95, 95); */
   width: 1200px;
-  margin: 5vh auto;
+  margin: 0 auto;
   padding: 30px 30px;
 }
 
@@ -32,6 +32,7 @@ button {
   border-radius: 30px;
   display: flex;
   justify-content: center;
+  font-family: inherit;
 }
 
 .create-btn {
@@ -60,6 +61,18 @@ button {
   display: flex;
   place-items: center;
   justify-content: center;
+  gap: 3px;
+}
+
+.monster-text {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: start;
+}
+
+.monst-health,
+.monst-attack-power {
+  font-size: 18px;
 }
 
 .buba:hover {

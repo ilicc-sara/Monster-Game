@@ -35,7 +35,11 @@ const heroManager = function () {
   const getHealth = () => hero.health;
   const healthDown = () => (hero.health -= 1);
 
-  return { getHero, getHealth, healthDown };
+  const getDefense = () => hero.defense;
+  const defenseDown = () => (hero.defense -= 1);
+  const defenseUp = () => (hero.defense += 1);
+
+  return { getHero, getHealth, healthDown, getDefense, defenseDown, defenseUp };
 };
 const managerHero = heroManager();
 console.log(managerHero.getHero());
@@ -47,7 +51,10 @@ form.addEventListener("submit", function (e) {
 
   const newMonster = document.createElement("div");
   newMonster.classList.add("monster-box");
-  newMonster.innerHTML = `<img class="buba" src="/bubica.png" /><btn class="attack-btn">attack</btn>`;
+  newMonster.innerHTML = `<p class="monster-text">
+              health: <span class="monst-health">1</span>&nbsp;&nbsp; attack power:
+              <span class="monst-attack-power">20</span>
+            </p>   <img class="buba" src="/bubica.png" /><btn class="attack-btn">attack</btn>`;
   monsterContainer.appendChild(newMonster);
 });
 
@@ -64,4 +71,7 @@ monsterContainer.addEventListener("click", function (e) {
   health.textContent = managerHero.getHealth();
 });
 
-heroAttack.addEventListener("click", function (e) {});
+heroAttack.addEventListener("click", function (e) {
+  managerHero.defenseDown();
+  defense.textContent = managerHero.getDefense();
+});
