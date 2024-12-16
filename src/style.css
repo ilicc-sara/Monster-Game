@@ -41,6 +41,7 @@ button {
   color: white;
   border: none;
   font-weight: bold;
+  letter-spacing: 5px;
 }
 .monster-hero-cont {
   display: flex;
@@ -150,4 +151,14 @@ button {
 .health,
 .defense {
   font-size: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.timer {
+  color: rgb(120, 5, 5);
+  position: absolute;
+  bottom: -10px;
 }

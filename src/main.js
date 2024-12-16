@@ -13,6 +13,11 @@ const heroAttack = document.querySelector(".attack-btn-hero");
 const defense = document.querySelector(".defense");
 const health = document.querySelector(".health");
 
+const boostBtn = document.querySelector(".boost-btn");
+
+const timerEl = document.querySelector(".timer");
+const second = document.querySelector(".seconds");
+
 let monsterHealth;
 let attackPower;
 
@@ -52,7 +57,7 @@ console.log(managerHero.getHero());
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   creatorMonster = monsterCreator();
-  console.log(creatorMonster.getMonster());
+  // console.log(creatorMonster.getMonster());
 
   const newMonster = document.createElement("div");
   newMonster.classList.add("monster-box");
@@ -64,7 +69,7 @@ form.addEventListener("submit", function (e) {
   newMonster.setAttribute("data-id", creatorMonster.getId());
   monsterContainer.appendChild(newMonster);
 
-  console.log(newMonster);
+  // console.log(newMonster);
 
   monsterHealth = document.querySelector(".monst-health");
   attackPower = document.querySelector(".monst-attack-power");
@@ -72,6 +77,9 @@ form.addEventListener("submit", function (e) {
 
 monsterContainer.addEventListener("click", function (e) {
   if (!e.target.closest(".monster-box")) return;
+
+  console.log(e.target.closest(".monster-box").dataset.id);
+  console.log(creatorMonster.getId());
   // console.log(e.target.closest(".monster-box"));
 
   managerHero.healthDown();
@@ -92,4 +100,29 @@ monsterContainer.addEventListener("click", function (e) {
 heroAttack.addEventListener("click", function (e) {
   managerHero.defenseDown();
   defense.textContent = managerHero.getDefense();
+});
+
+const timerFunction = function () {
+  let time = 11;
+
+  const tick = function () {
+    time--;
+    timerEl.classList.remove("hidden");
+    console.log(time);
+    second.textContent = String(time).padStart(2, 0);
+    if (time === 0) {
+      clearInterval(timer);
+      managerHero.defenseUp();
+      console.log(managerHero.getDefense());
+      defense.textContent = managerHero.getDefense();
+      timerEl.classList.add("hidden");
+    }
+  };
+
+  tick();
+  const timer = setInterval(tick, 1000);
+};
+
+boostBtn.addEventListener("click", function () {
+  timerFunction();
 });
